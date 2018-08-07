@@ -31,7 +31,7 @@
                     @endif
                     <div class="row text-center">
                         <select class="form-control" type="text" style="width: 100%;" >
-                            <option value="" disabled selected>Depo Seçiniz</option>
+                            <option value="" disabled selected>Arşiv Seçiniz</option>
                         </select>
 
 
