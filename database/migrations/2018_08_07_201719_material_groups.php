@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Depots extends Migration
+class MaterialGroups extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class Depots extends Migration
      */
     public function up()
     {
-        Schema::create('depots', function (Blueprint $table) {
+        Schema::create('material_groups', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
-            $table->unsignedInteger('archive_id');
-            $table->string('description')->nullable();
-            $table->string('location')->nullable();
-            $table->foreign('archive_id')->references('id')->on('archives');
-
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class Depots extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('depots');
+        Schema::dropIfExists('material_groups');
     }
 }

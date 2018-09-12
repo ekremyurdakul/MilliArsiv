@@ -18,6 +18,7 @@ class DepotSeeder extends Seeder
         foreach ($depot_names as $name){
             \App\Depot::create([
                 'name'          => $name,
+                'description'   => 'Açıklama Yok',
                 'archive_id'    => $defaultArchive->id
             ]);
         }

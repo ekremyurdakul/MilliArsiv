@@ -17,6 +17,7 @@ class Archives extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->string('location')->nullable();
+            $table->string('description')->nullable();
 
             $table->timestamps();
         });
@@ -29,6 +30,6 @@ class Archives extends Migration
      */
     public function down()
     {
-        Schema::drop('archives');
+        Schema::dropIfExists('archives');
     }
 }

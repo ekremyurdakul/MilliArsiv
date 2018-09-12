@@ -18,3 +18,21 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/depot/{id}', 'DepotController@index')->name('depot');
+
+Route::get('/depots/getByArchive/{id}', 'DepotController@getByArhive');
+
+Route::get('/depots/addMaterial/{depot_id}', 'MaterialController@addMaterial');
+
+Route::get('/materials/getParameters/{type_id}', 'MaterialController@getParameters');
+
+Route::get('/materials/delete/{id}/{depot_id}', 'MaterialController@delete');
+
+Route::get('/materials/search', 'MaterialController@search');
+
+Route::get('/materials/{id}', 'MaterialController@index');
+
+Route::post('/materials/add', 'MaterialController@add');
+
+Route::post('/materials/update', 'MaterialController@update');

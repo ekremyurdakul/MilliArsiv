@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
+use App\Archive;
+use App\Depot;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        //retrieving the archives
+        $archives = Archive::all();
+
+        Alert::message('Milli Arşive Hoşgeldiniz.');
+
+
+        return view('home')->with([
+            'archives'  => $archives,
+        ]);
     }
 }
