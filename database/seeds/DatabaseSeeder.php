@@ -17,6 +17,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(MaterialTypeSeeder::class);
 
-        $this->call(FakeMaterialSeeder::class);
+        //$this->call(FakeMaterialSeeder::class);
     }
 }

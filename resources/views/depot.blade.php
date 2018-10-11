@@ -20,7 +20,7 @@
                     <table id="materials" class="display" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Materyal Adı</th>
+                                <th>Fon Adı</th>
                                 <th>Lokasyonu</th>
                                 <th>Tipi</th>
                                 <th>Grup</th>

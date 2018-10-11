@@ -69,7 +69,7 @@
                             '\n' +
                             '                <div id="display_depots" class="card-body">'+data[i]['description']+'</div>\n' +
                             '            </div><div class="card-footer">' +
-                            '<a style="color: white" class="btn btn-danger"><i class="fas fa-trash-alt"></i>  Sil</a><a href="/depot/'+data[i]['id']+'" class="btn btn-primary"><i class="fas fa-arrow-right"></i></a></div></div>'
+                            '<a href="/depot/'+data[i]['id']+'" class="btn btn-primary"><i class="fas fa-arrow-right"></i></a></div></div>'
                         );
                     }
 

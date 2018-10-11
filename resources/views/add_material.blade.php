@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h2>Envanter Ekleme</h2>
+                <h2>Envanter Ekleme -- Depo : {{\App\Depot::find($depot_id)->name}}</h2>
             </div>
             <form action="/materials/add" method="POST">
                 {{csrf_field()}}
