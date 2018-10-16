@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Alert;
+use App\Depot;
 use App\Material;
 use App\MaterialData;
 use App\MaterialType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\HttpKernel\HttpCache\Esi;
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class MaterialController extends Controller
 {
@@ -106,5 +112,60 @@ class MaterialController extends Controller
 
             return json_encode(["suggestions"=>$suggestions]);
 
+    }
+
+    public function excelImport($id){
+        $depot = Depot::find($id);
+        return view('depot_excel_import')->with([
+            'depot' => $depot,
+        ]);
+    }
+
+    public function excelImportPOST(Request $request){
+        $inputFileName = $request->file('excel')->getRealPath();
+        $depot_id = $request->depot_id;
+        $material_type_id = $request->material_type_id;
+        $inputFileType = 'Xls';
+
+
+        $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileType);
+        $reader->setReadDataOnly(true);
+        $spreadsheet = $reader->load($inputFileName);
+
+        $worksheet = $spreadsheet->getActiveSheet();
+
+        $x =0;
+        foreach ($worksheet->getRowIterator() as $row) {
+            if($x != 0){
+                $material = new Material();
+                $data =  MaterialData::create([]);
+                $cellIterator = $row->getCellIterator();
+                $cellIterator->setIterateOnlyExistingCells(TRUE); // This loops through all cells,
+                $i = 0;
+                foreach ($cellIterator as $cell) {
+                    if($i = 0){
+                        $material->locator  =   $cell->getValue();
+                    }else if($i == 36){
+                        break;
+                    }else{
+                        $data['data'.$i]    =    $cell->getValue();
+                    }
+                    $cell->getValue();
+
+                }
+                $material->name = MaterialType::find($material_type_id)->name;
+                $material->depot_id = $depot_id;
+                $material->material_type_id = $material_type_id;
+                $material->material_data_id = $data->id;
+
+                $data->save();
+                $material->save();
+            }
+            $x++;
+        }
+
+        return view('depot_excel_import')->with([
+
+        ]);
     }
 }

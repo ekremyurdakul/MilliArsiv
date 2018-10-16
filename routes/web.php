@@ -33,6 +33,10 @@ Route::get('/materials/search', 'MaterialController@search');
 
 Route::get('/materials/{id}', 'MaterialController@index');
 
+Route::get('/materials/import/{id}', 'MaterialController@excelImport');
+
+Route::post('/materials/import', 'MaterialController@excelImportPOST');
+
 Route::post('/materials/add', 'MaterialController@add');
 
 Route::post('/materials/update', 'MaterialController@update');

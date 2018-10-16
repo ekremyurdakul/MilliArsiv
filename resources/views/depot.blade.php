@@ -14,6 +14,11 @@
                         <button class="btn btn-primary"><i class="fas fa-plus"></i>
                         </button>
                     </a>
+
+                    <a href="/materials/import/{{$depot->id}}">
+                        <button class="btn btn-primary"><i class="fas fa-file-excel"></i>
+                        </button>
+                    </a>
                 </div>
                 </div>
                 <div class="card-body">
