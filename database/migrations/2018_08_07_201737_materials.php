@@ -15,7 +15,7 @@ class Materials extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('locator')->nullable();
             $table->unsignedInteger('depot_id');
             $table->unsignedInteger('material_type_id');

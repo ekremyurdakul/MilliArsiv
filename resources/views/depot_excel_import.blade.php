@@ -7,6 +7,7 @@
                 <div class="card">
                     <div class="card-header">
                         Excel Aktarma -- Depo : {{$depot->name}}
+
                     </div>
                     <div class="card-body">
                         <form action="/materials/import" method="POST" enctype="multipart/form-data">
@@ -34,6 +35,9 @@
 
                             </div>
                         </form>
+                    </div>
+                    <div class="card-footer">
+                        <a href="/depot/{{$depot->id}}" class="btn btn-primary"><i class="fa fa-arrow-left"></i></a>
                     </div>
                 </div>
             </div>

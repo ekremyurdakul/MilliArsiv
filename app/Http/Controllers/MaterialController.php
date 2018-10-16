@@ -143,29 +143,31 @@ class MaterialController extends Controller
                 $cellIterator->setIterateOnlyExistingCells(TRUE); // This loops through all cells,
                 $i = 0;
                 foreach ($cellIterator as $cell) {
-                    if($i = 0){
+                    echo $cell->getValue();
+                    if($i == 0){
                         $material->locator  =   $cell->getValue();
                     }else if($i == 36){
                         break;
                     }else{
-                        $data['data'.$i]    =    $cell->getValue();
+                        $data['data'.($i - 1)]    =    $cell->getValue();
                     }
-                    $cell->getValue();
+
+                    $i++;
 
                 }
+
                 $material->name = MaterialType::find($material_type_id)->name;
                 $material->depot_id = $depot_id;
                 $material->material_type_id = $material_type_id;
                 $material->material_data_id = $data->id;
-
                 $data->save();
                 $material->save();
+
             }
             $x++;
         }
 
-        return view('depot_excel_import')->with([
-
-        ]);
+        Alert::message('Bşarıyla Aktarıldı');
+        return redirect('/depot/'.$depot_id);
     }
 }
